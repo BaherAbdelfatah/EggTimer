@@ -51,6 +51,7 @@ fun NotificationManager.sendNotification(messageBody: String, applicationContext
     // TODO: Step 1.2 get an instance of NotificationCompat.Builder
     val builder = NotificationCompat.Builder(
         applicationContext,
+        // TODO: Step 1.8 verify the notification channel name
         applicationContext.getString(R.string.egg_notification_channel_id)
     )
     // TODO: Step 1.8 use the new 'breakfast' notification channel
