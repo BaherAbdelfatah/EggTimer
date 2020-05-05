@@ -12,14 +12,20 @@ import com.google.firebase.messaging.RemoteMessage
 class MyFirebaseMessagingService : FirebaseMessagingService() {
 
     override fun onMessageReceived(remoteMessage: RemoteMessage?) {
-        Log.d("FLMWG", "Remote Message From -> ${remoteMessage?.from}")
+        // Not getting messages here? See why this may be: https://goo.gl/39bRNJ
+        Log.d(TAG, "From: ${remoteMessage?.from}")
 
-        remoteMessage?.data?.let { Log.d("FLMWG", "Remote Message Data Payload -> ${remoteMessage.data}") }
+        // TODO: Step 3.5 check messages for data
+        // Check if message contains a data payload.
+        remoteMessage?.data?.let {
+            Log.d(TAG, "Message data payload: " + remoteMessage.data)
+        }
 
         remoteMessage?.notification?.let {
-            Log.d("FLMWG", "Remote Message Notification Body: ${it.body}")
+            Log.d(TAG, "Message Notification Body: ${it.body}")
             sendNotification(it.body!!)
         }
+
     }
 
     private fun sendNotification(msgBody: String) {
